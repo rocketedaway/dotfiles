@@ -564,6 +564,10 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 defaults write com.google.Chrome ExtensionInstallSources -array "https://*.github.com/*" "http://userscripts.org/*"
 defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://*.github.com/*" "http://userscripts.org/*"
 
+# Disable two finger swipe navigation
+defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary.plist AppleEnableSwipeNavigateWithScrolls -bool false
+
 ###############################################################################
 # GPGMail 2                                                                   #
 ###############################################################################
