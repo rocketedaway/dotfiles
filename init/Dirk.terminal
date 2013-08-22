@@ -226,8 +226,12 @@
 	<true/>
 	<key>WindowTitle</key>
 	<string></string>
+	<key>columnCount</key>
+	<integer>159</integer>
 	<key>name</key>
 	<string>Dirk</string>
+	<key>rowCount</key>
+	<integer>20</integer>
 	<key>shellExitAction</key>
 	<integer>0</integer>
 	<key>type</key>
