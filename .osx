@@ -578,22 +578,26 @@ defaults write com.google.Chrome.canary.plist AppleEnableSwipeNavigateWithScroll
 defaults write ~/Library/Preferences/org.gpgtools.gpgmail SignNewEmailsByDefault -bool false
 
 ###############################################################################
-# SizeUp.app                                                                  #
+# Spectacle.app                                                               #
 ###############################################################################
 
-# Start SizeUp at login
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true
+# Run as background application
+defaults write com.divisiblebyzero.Spectacle StatusItemEnabled -bool false
+defaults write com.divisiblebyzero.Spectacle BackgroundAlertSuppressed -bool false
 
-# Don’t show the preferences window on next start
-defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false
+# Use ctrl+alt+cmd+down to move windows to center
+defaults write com.divisiblebyzero.Spectacle MoveToCenter "<62706c69 73743030 d4010203 04050619 1a582476 65727369 6f6e5824 6f626a65 63747359 24617263 68697665 72542474 6f701200 0186a0a4 07081112 55246e75 6c6cd409 0a0b0c0d 0e0f1059 6d6f6469 66696572 73546e61 6d65576b 6579436f 64655624 636c6173 73111900 8002107d 80035c4d 6f766554 6f43656e 746572d2 13141516 5a24636c 6173736e 616d6558 24636c61 73736573 585a4b48 6f744b65 79a21718 585a4b48 6f744b65 79584e53 4f626a65 63745f10 0f4e534b 65796564 41726368 69766572 d11b1c54 726f6f74 80010811 1a232d32 373c424b 555a6269 6c6e7072 7f848f98 a1a4adb6 c8cbd000 00000000 00010100 00000000 00001d00 00000000 00000000 00000000 0000d2>"
+
+# Use ctrl+alt+cmd+up to move windows to fullscreen
+defaults write com.divisiblebyzero.Spectacle MoveToFullscreen "<62706c69 73743030 d4010203 04050619 1a582476 65727369 6f6e5824 6f626a65 63747359 24617263 68697665 72542474 6f701200 0186a0a4 07081112 55246e75 6c6cd409 0a0b0c0d 0e0f1059 6d6f6469 66696572 73546e61 6d65576b 6579436f 64655624 636c6173 73111900 8002107e 80035f10 104d6f76 65546f46 756c6c73 63726565 6ed21314 15165a24 636c6173 736e616d 65582463 6c617373 6573585a 4b486f74 4b6579a2 1718585a 4b486f74 4b657958 4e534f62 6a656374 5f100f4e 534b6579 65644172 63686976 6572d11b 1c54726f 6f748001 08111a23 2d32373c 424b555a 62696c6e 7072858a 959ea7aa b3bcced1 d6000000 00000001 01000000 00000000 1d000000 00000000 00000000 00000000 d8>"
 
 ###############################################################################
 # Transmission.app                                                            #
 ###############################################################################
 
 # Use `~/Documents/Torrents` to store incomplete downloads
-defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
-defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Documents/Torrents"
+#defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+#defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Documents/Torrents"
 
 # Don’t prompt for confirmation before downloading
 defaults write org.m0k.transmission DownloadAsk -bool false
