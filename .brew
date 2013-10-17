@@ -34,10 +34,12 @@ brew install php55
 
 # Install other useful binaries
 brew install ack
+brew install dnsmasq
 #brew install exiv2
 brew install git
 #brew install imagemagick
 brew install lynx
+brew install mysql
 brew install node
 brew install phantomjs
 brew install pigz
@@ -49,6 +51,17 @@ brew install zopfli
 
 brew tap homebrew/versions
 brew install lua52
+
+# MAMP setup
+# MySQL
+sudo mkdir /var/mysql
+sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
+ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+# Dnsmasq
+cp /usr/local/opt/dnsmasq/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
+sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
+sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 
 # Install native apps
 brew tap phinze/homebrew-cask
