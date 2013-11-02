@@ -52,6 +52,7 @@ brew install zopfli
 brew tap homebrew/versions
 brew install lua52
 
+<<<<<<< HEAD
 # MAMP setup
 # MySQL
 sudo mkdir /var/mysql
@@ -94,5 +95,7 @@ installcask transmission
 installcask virtualbox
 installcask vlc
 
+=======
+>>>>>>> 7f96896d33ba33e8e4fec7309b2bd592377e8249
 # Remove outdated versions from the cellar
 brew cleanup
