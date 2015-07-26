@@ -1,3 +1,25 @@
+# Mount rwwebdesign.ca
+function rwmount() {
+	local mountPoint="/tmp/_rwwebdesign_sshfs_mount"
+	if [ -d "$mountPoint" ]; then
+		echo "Mount point $mountPoint already exists"  
+	else
+		mkdir "$mountPoint"
+		sshfs "rwweb:$@" $mountPoint
+		echo "$mountPoint Mounted to rwwebdesign.ca at $@"
+	fi
+}
+
+# Unmount rwwebdesign.ca
+function rwumount() {
+	local mountPoint="/tmp/_rwwebdesign_sshfs_mount"
+	if [ -d "$mountPoint" ]; then
+		umount $mountPoint
+		rm -rf "$mountPoint"
+		echo "$mountPoint Unmounted from rwwebdesign.ca"
+	fi
+}
+
 # Simple calculator
 function calc() {
 	local result=""

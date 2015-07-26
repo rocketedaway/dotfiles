@@ -13,9 +13,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "Dirk’s MacBook Pro"
-sudo scutil --set HostName "Dirk’s MacBook Pro"
-sudo scutil --set LocalHostName "Dirks-MacBook-Pro"
+sudo scutil --set ComputerName "Randy’s MacBook Pro"
+sudo scutil --set HostName "Randy’s MacBook Pro"
+sudo scutil --set LocalHostName "Randy-MacBook-Pro"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Dirks-MacBook-Pro"
 
 # Set standby delay to 24 hours (default is 1 hour)
@@ -512,10 +512,10 @@ sudo mdutil -E / > /dev/null
 defaults write com.apple.terminal StringEncodings -array 4
 
 # Use a modified version of the Pro theme by default in Terminal.app
-open "${HOME}/init/Dirk.terminal"
-sleep 1 # Wait a bit to make sure the theme is loaded
-defaults write com.apple.terminal "Default Window Settings" -string "Dirk"
-defaults write com.apple.terminal "Startup Window Settings" -string "Dirk"
+# open "${HOME}/init/Dirk.terminal"
+# sleep 1 # Wait a bit to make sure the theme is loaded
+# defaults write com.apple.terminal "Default Window Settings" -string "Dirk"
+# defaults write com.apple.terminal "Startup Window Settings" -string "Dirk"
 
 # Enable “focus follows mouse” for Terminal.app and all X11 apps
 # i.e. hover over a window and start typing in it without clicking first
