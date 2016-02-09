@@ -1,31 +1,45 @@
-# Install native apps
+#!/usr/bin/env bash
+
+# Install Homebrew if it is missing
+hash brew 2> /dev/null || { source .brew }
+
+# Install Cask
 brew tap phinze/homebrew-cask
 brew install brew-cask
 
 function installcask() {
-	brew cask install "${@}" 2> /dev/null
+    brew cask install "${@}" 2> /dev/null
 }
 
-installcask app-cleaner
-installcask cyberduck
-installcask dropbox
+# Browsers
 installcask firefox
-installcask github
 installcask google-chrome
 installcask google-chrome-canary
+
+# Data Storage/Transfer
+installcask dropbox
 installcask google-drive
-installcask google-hangouts
-installcask imagealpha
-installcask imageoptim
-installcask iterm2
-installcask miro-video-converter
-installcask mou
-installcask processing
-installcask sequel-pro
-installcask skype
+
+# Misc
 installcask spectacle
-installcask sublime-text
-installcask the-unarchiver
-installcask transmission
-installcask virtualbox
+installcask shadowsweeper
+
+# Media
 installcask vlc
+installcask spotify
+installcask steam
+
+# Messaging
+installcask slack
+installcask skype
+installcask google-hangouts
+
+# Development
+installcask iterm2
+installcask cyberduck
+installcask sublime-text
+installcask visual-studio-code
+installcask unity
+installcask dockertoolbox
+
+unset installcask
