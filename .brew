@@ -26,7 +26,7 @@ brew install php55
 
 # Install other useful binaries
 brew install git
-brew install node
+brew install nvm
 brew install jenv
 
 # Install Brew Cask
