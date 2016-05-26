@@ -19,7 +19,6 @@ installcask google-drive
 
 # Misc
 installcask spectacle
-installcask shadowsweeper
 
 # Media
 installcask vlc
@@ -34,7 +33,6 @@ installcask google-hangouts
 # Development
 installcask iterm2
 installcask cyberduck
-installcask sublime-text
 installcask visual-studio-code
 installcask unity
 installcask dockertoolbox
