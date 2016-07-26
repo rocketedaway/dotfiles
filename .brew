@@ -30,6 +30,7 @@ brew install nvm
 brew install jenv
 brew install pyenv
 brew install pyenv-virtualenvwrapper
+brew install autoenv
 
 # Install Brew Cask
 brew tap caskroom/cask

@@ -40,3 +40,6 @@ eval "pyenv global 2.7.11"
 
 export WORKON_HOME=~/.virtualenvs
 pyenv virtualenvwrapper # Requires pyenv-virtualenv. Run .brew file to install
+
+# AutoEnv
+source /usr/local/opt/autoenv/activate.sh
