@@ -19,6 +19,7 @@ installcask google-drive
 
 # Misc
 installcask spectacle
+installcask keepassx
 
 # Media
 installcask vlc
