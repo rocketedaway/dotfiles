@@ -1,0 +1,7 @@
+#!/bin/bash
+
+launchctl submit -l Slack -p /Applications/Slack.app/Contents/MacOS/Slack;
+launchctl submit -l Spotify -p /Applications/Spotify.app/Contents/MacOS/Spotify;
+launchctl submit -l Dropbox -p /Applications/Dropbox.app/Contents/MacOS/Dropbox;
+launchctl submit -l Spectacle -p /Applications/Spectacle.app/Contents/MacOS/Spectacle;
+launchctl submit -l GoogleDrive -p /Applications/Google\ Drive.app/Contents/MacOS/Google\ Drive;
