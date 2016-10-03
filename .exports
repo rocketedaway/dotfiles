@@ -32,3 +32,14 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Node and NVM
 source $(brew --prefix nvm)/nvm.sh
+eval "nvm use --delete-prefix v5.11"
+
+# Python, PyEnv and VirtualEnv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+eval "pyenv global 2.7.11"
+
+export WORKON_HOME=~/.virtualenvs
+pyenv virtualenvwrapper # Requires pyenv-virtualenv. Run .brew file to install
+
+# AutoEnv
+source /usr/local/opt/autoenv/activate.sh
