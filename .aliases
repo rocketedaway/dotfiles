@@ -44,6 +44,9 @@ if [ "$(uname -s)" == "Darwin" ]; then
 	# Enable/Disable Spotlight
 	alias spoton="sudo mdutil -a -i on"
 	alias spotoff="sudo mdutil -a -i off"
+
+	# Lock the screen (when going AFK)
+	alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 else
 	#############
 	# Linux/GNU #
