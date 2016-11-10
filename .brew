@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Exit if not OSX
+if [ "$(uname -s)" != "Darwin" ]; then 
+    echo "Requires OSX"
+    exit 1 
+fi;
+
 # Make sure we’re using the latest Homebrew
 brew update
 
@@ -37,3 +43,15 @@ brew tap caskroom/cask
 
 # Remove outdated versions from the cellar
 brew cleanup
+
+################
+# Post Install #
+################
+
+# Install NodeJS versions
+source $(brew --prefix nvm)/nvm.sh
+nvm install v5.11
+
+# Install Python 2 && 3
+pyenv install 3.5.2
+pyenv install 2.7.12

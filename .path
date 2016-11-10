@@ -1,8 +1,28 @@
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+########################
+# OS Specific  Exports #
+########################
 
-export NODE_PATH="/usr/local/share/npm/lib/node_modules"
-export PATH="/usr/local/share/npm/bin:$PATH"
+if [ "$(uname -s)" == "Darwin" ]; then
+    #######
+	# OSX #
+	#######
 
-export PATH="$(brew --prefix josegonzalez/php/php55)/bin:$PATH"
+    # Add Homebrew sbin to path
+    export PATH="/usr/local/sbin:$PATH"
 
-export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+    # Update coreutils with brew installed version
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
+    # NodeJS
+    export NODE_PATH="/usr/local/share/npm/lib/node_modules"
+    export PATH="/usr/local/share/npm/bin:$PATH"
+
+    # PHP
+    export PATH="$(brew --prefix josegonzalez/php/php55)/bin:$PATH"
+
+    # Jenv
+    export PATH="$HOME/.jenv/bin:$PATH"
+
+    # PyEnv
+    export PATH="$(brew --prefix pyenv)/bin:$PATH"
+fi

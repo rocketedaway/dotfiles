@@ -1,11 +1,35 @@
+#########################
+# OS Specific Functions #
+#########################
+
+if [ "$(uname -s)" == "Darwin" ]; then
+	#######
+	# OSX #
+	#######
+	
+	# Change working directory to the top-most Finder window location
+	function cdf() { # short for `cdfinder`
+		cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+	}
+
+	# `o` with no arguments opens current directory, otherwise opens the given
+	# location
+	function o() {
+		if [ $# -eq 0 ]; then
+			open .
+		else
+			open "$@"
+		fi
+	}
+fi
+
+#############
+# Functions #
+#############
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$@"
-}
-
-# Change working directory to the top-most Finder window location
-function cdf() { # short for `cdfinder`
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
 }
 
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
@@ -58,39 +82,13 @@ if [ $? -eq 0 ]; then
 	}
 fi
 
-# Compare original and gzipped file size
-function gz() {
-	local origsize=$(wc -c < "$1")
-	local gzipsize=$(gzip -c "$1" | wc -c)
-	local ratio=$(echo "$gzipsize * 100/ $origsize" | bc -l)
-	printf "orig: %d bytes\n" "$origsize"
-	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio"
-}
-
-# Syntax-highlight JSON strings or files
-# Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
-function json() {
-	if [ -t 0 ]; then # argument
-		python -mjson.tool <<< "$*" | pygmentize -l javascript
-	else # pipe
-		python -mjson.tool | pygmentize -l javascript
-	fi
-}
-
-# Install Grunt plugins and add them as `devDependencies` to `package.json`
-# Usage: `gi contrib-watch contrib-uglify zopfli`
-function gi() {
-	local IFS=,
-	eval npm install --save-dev grunt-{"$*"}
-}
-
-# `s` with no arguments opens the current directory in Sublime Text, otherwise
+# `c` with no arguments opens the current directory in VSCode, otherwise
 # opens the given location
-function s() {
+function c() {
 	if [ $# -eq 0 ]; then
-		subl .
+		code .
 	else
-		subl "$@"
+		code "$@"
 	fi
 }
 
@@ -101,15 +99,5 @@ function v() {
 		vim .
 	else
 		vim "$@"
-	fi
-}
-
-# `o` with no arguments opens current directory, otherwise opens the given
-# location
-function o() {
-	if [ $# -eq 0 ]; then
-		open .
-	else
-		open "$@"
 	fi
 }

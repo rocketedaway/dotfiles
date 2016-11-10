@@ -2,6 +2,12 @@
 
 # ~/.osx — http://mths.be/osx
 
+# Exit if not OSX
+if [ "$(uname -s)" != "Darwin" ]; then 
+    echo "Requires OSX"
+    exit 1 
+fi;
+
 # Ask for the administrator password upfront
 sudo -v
 

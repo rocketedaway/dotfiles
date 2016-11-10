@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
+# Exit if not OSX
+if [ "$(uname -s)" != "Darwin" ]; then 
+    echo "Requires OSX"
+    exit 1 
+fi;
+
 # Install Cask
-brew tap phinze/homebrew-cask
-brew install brew-cask
+brew tap caskroom/cask
 
 function installcask() {
     brew cask install "${@}" 2> /dev/null;
@@ -38,4 +43,21 @@ installcask visual-studio-code
 installcask unity
 installcask dockertoolbox
 
+# Java
+installcask java
+
 unset installcask;
+
+################
+# Post Install #
+################
+
+# Add Java versions installed above to Jenv
+if hash jenv 2>/dev/null; then
+    for d in /Library/Java/JavaVirtualMachines/*/; do
+        JAVA_PATH="$d/Contents/Home"
+        jenv add $JAVA_PATH
+    done
+
+    jenv rehash
+fi

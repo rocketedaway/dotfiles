@@ -1,3 +1,7 @@
+###########
+# Exports #
+###########
+
 # Make vim the default editor
 export EDITOR="vim"
 
@@ -21,25 +25,34 @@ export MANPAGER="less -X"
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto"
 
-# Link Homebrew casks in `/Applications` rather than `~/Applications`
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+########################
+# OS Specific  Exports #
+########################
 
-# Java + Jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+if [ "$(uname -s)" == "Darwin" ]; then
+    #######
+	# OSX #
+	#######
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+    # Link Homebrew casks in `/Applications` rather than `~/Applications`
+    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-# Node and NVM
-source $(brew --prefix nvm)/nvm.sh
-eval "nvm use --delete-prefix v5.11"
+    # Jenv
+    eval "$(jenv init -)"
 
-# Python, PyEnv and VirtualEnv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-eval "pyenv global 2.7.11"
+    # NodeJs and NVM
+    source $(brew --prefix nvm)/nvm.sh &>/dev/null
+    eval "nvm use --delete-prefix v5.11 &>/dev/null" 
 
-export WORKON_HOME=~/.virtualenvs
-pyenv virtualenvwrapper # Requires pyenv-virtualenv. Run .brew file to install
+    # PyEnv
+    export PYENV_ROOT="$(brew --prefix pyenv)"
+    eval "$(pyenv init -)"
+    eval "pyenv global 2.7.12"
 
-# AutoEnv
-source /usr/local/opt/autoenv/activate.sh
+    # Python Virtualenvs
+    export WORKON_HOME="~/.virtualenvs"
+    pyenv virtualenvwrapper
+
+    # AutoEnv
+    source "$(brew --prefix autoenv)/activate.sh"
+fi
