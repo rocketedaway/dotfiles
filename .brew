@@ -38,6 +38,9 @@ brew install pyenv
 brew install pyenv-virtualenvwrapper
 brew install autoenv
 
+# Install Swift
+brew install swift
+
 # Install Brew Cask
 brew tap caskroom/cask
 
@@ -55,3 +58,11 @@ nvm install v5.11
 # Install Python 2 && 3
 pyenv install 3.5.2
 pyenv install 2.7.12
+
+# Use brew swift
+BREW_SWIFT="/usr/local/opt/swift"
+if [ -d $BREW_SWIFT ]; then
+    LINK_DESTINATION="/usr/local/bin"
+    ln -s "$BREW_SWIFT/bin/swift" "$LINK_DESTINATION/swift"
+    ln -s "$BREW_SWIFT/bin/swiftc" "$LINK_DESTINATION/swiftc"
+fi

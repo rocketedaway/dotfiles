@@ -9,6 +9,7 @@ export EDITOR="vim"
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
+
 # Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
@@ -37,14 +38,20 @@ if [ "$(uname -s)" == "Darwin" ]; then
     # Link Homebrew casks in `/Applications` rather than `~/Applications`
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-    # Jenv
-    eval "$(jenv init -)"
+    # Java + Jenv
+    if [ -d ~/.jenv/versions/1.8 ]; then
+        eval "$(jenv init -)"
+        jenv global 1.8
+        export JAVA_HOME="$(/usr/libexec/java_home)"
+    else
+        echo "Java 1.8 not installed"
+    fi
 
-    # NodeJs and NVM
+    # NodeJs + NVM
     source $(brew --prefix nvm)/nvm.sh &>/dev/null
     eval "nvm use --delete-prefix v5.11 &>/dev/null" 
 
-    # PyEnv
+    # Python + PyEnv
     export PYENV_ROOT="$(brew --prefix pyenv)"
     eval "$(pyenv init -)"
     eval "pyenv global 2.7.12"

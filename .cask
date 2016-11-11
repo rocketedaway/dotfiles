@@ -55,9 +55,8 @@ unset installcask;
 # Add Java versions installed above to Jenv
 if hash jenv 2>/dev/null; then
     for d in /Library/Java/JavaVirtualMachines/*/; do
-        JAVA_PATH="$d/Contents/Home"
-        jenv add $JAVA_PATH
+        jenv add "$d/Contents/Home"
     done
-
+    
     jenv rehash
 fi
