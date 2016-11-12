@@ -21,15 +21,16 @@ installcask google-chrome-canary
 # Data Storage/Transfer
 installcask dropbox
 installcask google-drive
+installcask google-photos-backup
 
 # Misc
-installcask spectacle
 installcask keepassx
+installcask spectacle
 
 # Media
 installcask vlc
-installcask spotify
 installcask steam
+installcask spotify
 
 # Messaging
 installcask slack
@@ -37,26 +38,27 @@ installcask skype
 installcask google-hangouts
 
 # Development
-installcask iterm2
-installcask cyberduck
-installcask visual-studio-code
 installcask unity
+installcask iterm2
+installcask synergy
+installcask cyberduck
 installcask dockertoolbox
+installcask visual-studio-code
 
 # Java
 installcask java
 
-unset installcask;
-
 ################
 # Post Install #
 ################
+
+unset installcask;
 
 # Add Java versions installed above to Jenv
 if hash jenv 2>/dev/null; then
     for d in /Library/Java/JavaVirtualMachines/*/; do
         jenv add "$d/Contents/Home"
     done
-    
+
     jenv rehash
 fi
