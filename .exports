@@ -47,19 +47,28 @@ if [ "$(uname -s)" == "Darwin" ]; then
         echo "Java 1.8 not installed"
     fi
 
+    # SwiftEnv
+    if which swiftenv > /dev/null; then
+        eval "$(swiftenv init -)"
+        swiftenv global 3.0.1
+    fi
+
     # NodeJs + NVM
-    source $(brew --prefix nvm)/nvm.sh &>/dev/null
-    eval "nvm use --delete-prefix v5.11 &>/dev/null" 
+    if which nvm > /dev/null; then
+        source $(brew --prefix nvm)/nvm.sh &>/dev/null
+        eval "nvm use --delete-prefix v5.11 &>/dev/null"
+    fi 
 
-    # Python + PyEnv
-    export PYENV_ROOT="$(brew --prefix pyenv)"
-    eval "$(pyenv init -)"
-    eval "pyenv global 2.7.12"
+    # Python/PyEnv/Virtualenvs
+    if which pyenv > /dev/null; then
+        export PYENV_ROOT="$(brew --prefix pyenv)"
+        eval "$(pyenv init -)"
+        pyenv global 2.7.12
 
-    # Python Virtualenvs
-    export WORKON_HOME="~/.virtualenvs"
-    pyenv virtualenvwrapper
-
+        export WORKON_HOME="~/.virtualenvs"
+        pyenv virtualenvwrapper
+    fi
+    
     # AutoEnv
     source "$(brew --prefix autoenv)/activate.sh"
 fi

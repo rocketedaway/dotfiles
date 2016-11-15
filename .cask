@@ -43,6 +43,7 @@ installcask iterm2
 installcask synergy
 installcask cyberduck
 installcask dockertoolbox
+installcask mysqlworkbench
 installcask visual-studio-code
 
 # Java
@@ -55,7 +56,7 @@ installcask java
 unset installcask;
 
 # Add Java versions installed above to Jenv
-if hash jenv 2>/dev/null; then
+if which nvm > /dev/null; then
     for d in /Library/Java/JavaVirtualMachines/*/; do
         jenv add "$d/Contents/Home"
     done
