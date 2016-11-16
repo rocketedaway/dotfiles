@@ -21,8 +21,12 @@ if [ "$(uname -s)" == "Darwin" ]; then
     export PATH="$(brew --prefix josegonzalez/php/php55)/bin:$PATH"
 
     # Jenv
-    export PATH="$HOME/.jenv/bin:$PATH"
+    if which jenv > /dev/null; then
+        export PATH="$HOME/.jenv/bin:$PATH"
+    fi
 
     # PyEnv
-    export PATH="$(brew --prefix pyenv)/bin:$PATH"
+    if which pyenv > /dev/null; then
+        export PATH="$(brew --prefix pyenv)/bin:$PATH"
+    fi
 fi
