@@ -11,8 +11,6 @@ if [ "$(uname -s)" == "Darwin" ]; then
 	alias d="cd ~/Documents/Dropbox"
 	alias dl="cd ~/Downloads"
 	alias dt="cd ~/Desktop"
-	alias g="git"
-	alias h="history"
 
 	# Set `ls` colour-flag
 	colorflag="-G"
@@ -86,6 +84,8 @@ alias -- -="cd -"
 
 # Shortcuts
 alias p="cd ~/Projects"
+alias g="git"
+alias h="history"
 
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
