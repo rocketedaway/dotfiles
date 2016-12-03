@@ -56,10 +56,10 @@ installcask java
 unset installcask;
 
 # Add Java versions installed above to Jenv
-if which nvm > /dev/null; then
+JENV_DIR=$(brew --prefix jenv)
+if [ -d "$JENV_DIR" ]; then
     for d in /Library/Java/JavaVirtualMachines/*/; do
         jenv add "$d/Contents/Home"
+        jenv rehash
     done
-
-    jenv rehash
 fi

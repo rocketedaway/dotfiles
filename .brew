@@ -54,19 +54,25 @@ brew cleanup
 ################
 
 # Install NodeJS versions
-if which nvm > /dev/null; then
-    source $(brew --prefix nvm)/nvm.sh
+NVM_DIR=$(brew --prefix nvm)
+if [ -d "$NVM_DIR" ]; then
+    source $NVM_DIR/nvm.sh
     nvm install v5.11
 fi
 
 # Install Swift
-if which swiftenv > /dev/null; then
+SWIFTENV_DIR=$(brew --prefix swiftenv)
+if [ -d "$SWIFTENV_DIR" ]; then
     swiftenv install 3.0.1
     swiftenv rehash
 fi
 
 # Install Python 2 && 3
-if which pyenv > /dev/null; then
+PYENV_DIR=$(brew --prefix pyenv)
+if [ -d "$PYENV_DIR" ]; then
     pyenv install 3.5.2
+    pyenv rehash
+    
     pyenv install 2.7.12
+    pyenv rehash
 fi
