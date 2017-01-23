@@ -51,8 +51,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     fi
 
     # SwiftEnv
-    SWIFTENV_DIR=$(brew --prefix swiftenv)
-    if [ -d "$SWIFTENV_DIR" ]; then
+    if which swiftenv > /dev/null; then
         eval "$(swiftenv init -)"
         swiftenv global 3.0.1
     fi
