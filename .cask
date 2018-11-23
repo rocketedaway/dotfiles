@@ -8,6 +8,7 @@ fi;
 
 # Install Cask
 brew tap caskroom/cask
+brew tap caskroom/versions
 
 function installcask() {
     brew cask install "${@}" 2> /dev/null;
@@ -38,13 +39,13 @@ installcask skype
 installcask google-hangouts
 
 # Development
-installcask unity
 installcask iterm2
 installcask synergy
 installcask cyberduck
-installcask dockertoolbox
 installcask mysqlworkbench
 installcask visual-studio-code
+installcask docker
+installcask sourcetree
 
 # Java
 installcask java
@@ -58,6 +59,21 @@ unset installcask;
 # Add Java versions installed above to Jenv
 JENV_DIR=$(brew --prefix jenv)
 if [ -d "$JENV_DIR" ]; then
+    # Create jenv directories if they do not exist
+    # See https://github.com/gcuisinier/jenv/issues/175
+    if [ ! -d "$HOME/.jenv" ]; then
+        mkdir "$HOME/.jenv"
+    fi
+
+    if [ ! -d "$HOME/.jenv/versions" ]; then
+        mkdir "$HOME/.jenv/versions"
+    fi
+
+    if [ ! -d "$HOME/.jenv/shims" ]; then
+        mkdir "$HOME/.jenv/shims"
+    fi
+    
+    # Add Java versions to jenv
     for d in /Library/Java/JavaVirtualMachines/*/; do
         jenv add "$d/Contents/Home"
         jenv rehash

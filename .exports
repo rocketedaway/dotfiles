@@ -41,13 +41,11 @@ if [ "$(uname -s)" == "Darwin" ]; then
     # Java + Jenv
     JENV_DIR=$(brew --prefix jenv)
     if [ -d "$JENV_DIR" ]; then
-        if [ -d ~/.jenv/versions/1.8 ]; then
-            eval "$(jenv init -)"
-            jenv global 1.8
-            export JAVA_HOME="$(/usr/libexec/java_home)"
-        else
-            echo "Java 1.8 not installed"
-        fi
+       if [ -d "$HOME/.jenv/versions/11.0" ]; then
+           eval "$(jenv init -)"
+           jenv global 11.0
+           export JAVA_HOME="$(/usr/libexec/java_home)"
+       fi
     fi
 
     # SwiftEnv
@@ -60,7 +58,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     NVM_DIR=$(brew --prefix nvm)
     if [ -d "$NVM_DIR" ]; then
         source $NVM_DIR/nvm.sh &>/dev/null
-        eval "nvm use --delete-prefix v5.11 &>/dev/null"
+        eval "nvm use --delete-prefix latest-v11.x &>/dev/null"
     fi 
 
     # Python/PyEnv/Virtualenvs
@@ -68,7 +66,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
     if [ -d "$PYENV_DIR" ]; then
         export PYENV_ROOT="$PYENV_DIR"
         eval "$(pyenv init -)"
-        pyenv global 2.7.12
+        pyenv global 2.7.15
 
         export WORKON_HOME="~/.virtualenvs"
         pyenv virtualenvwrapper
@@ -76,4 +74,10 @@ if [ "$(uname -s)" == "Darwin" ]; then
     
     # AutoEnv
     source "$(brew --prefix autoenv)/activate.sh"
+
+    # PHPBrew
+    if hash phpbrew 2>/dev/null; then
+        export PHPBREW_RC_ENABLE=1
+        [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+    fi
 fi
