@@ -1,6 +1,0 @@
-# PHP Brew
-export PHPBREW_RC_ENABLE=1
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
-# NIKE
-CLIO_NIKE_DEPLOY_PASS=yACRdp5Z6WRf
